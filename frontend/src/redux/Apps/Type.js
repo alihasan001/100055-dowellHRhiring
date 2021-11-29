@@ -1,0 +1,6 @@
+export const PAGE_1 = 'page1_filled'
+export const PAGE_2 = 'page2_filled'
+export const PAGE_3 = 'page3_filled'
+export const PAGE_4 = 'page4_filled'
+export const PAGE_5 = 'page5_filled'
+export const PAGE_6 = 'page6_filled'

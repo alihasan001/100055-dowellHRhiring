@@ -1,0 +1,19 @@
+.landing{
+    display:flex;
+    justify-content: center;
+}
+.loading::after{
+    content: "";
+    width: 100px;
+    height: 100px;
+    /* background: chartreuse; */
+    border: 10px solid #dddddd;
+    border-top: 10px solid #009579;
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
+}
+@keyframes loading{
+    to{
+        transform: rotate(1turn);
+    }
+}
