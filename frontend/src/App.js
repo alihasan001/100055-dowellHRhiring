@@ -8,7 +8,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-} from "react-router-dom";
+} 
+from "react-router-dom";
 import Page1 from './Components/Applications/Pages/Page1'
 import {Apps} from './Components/Applications/Apps'
 import ProtectedRoute from './Components/Still/ProtectedRoutes'
