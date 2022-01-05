@@ -1,5 +1,6 @@
 {
   "name": "frontend",
+  "homepage": "https://LL07-Team-Dowell.github.io/frontend/signup",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -26,6 +27,7 @@
     "redux-devtools-extension": "^2.13.9",
     "web-vitals": "^1.1.2"
   },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

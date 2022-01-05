@@ -5,7 +5,7 @@ import Newcard from './Components/Still/Cards'
 import store from './redux/store'
 import { Card } from '@material-ui/core';
 import {
-  BrowserRouter as Router,
+  HashRouter  as Router,
   Switch,
   Route,
 } 
