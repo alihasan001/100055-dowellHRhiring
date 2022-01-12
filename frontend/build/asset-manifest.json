@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/frontend/signup/static/css/main.870aa505.chunk.css",
-    "main.js": "/frontend/signup/static/js/main.d98a7dc8.chunk.js",
-    "main.js.map": "/frontend/signup/static/js/main.d98a7dc8.chunk.js.map",
-    "runtime-main.js": "/frontend/signup/static/js/runtime-main.401afb92.js",
-    "runtime-main.js.map": "/frontend/signup/static/js/runtime-main.401afb92.js.map",
-    "static/js/2.423da7d0.chunk.js": "/frontend/signup/static/js/2.423da7d0.chunk.js",
-    "static/js/2.423da7d0.chunk.js.map": "/frontend/signup/static/js/2.423da7d0.chunk.js.map",
-    "static/js/3.878cd095.chunk.js": "/frontend/signup/static/js/3.878cd095.chunk.js",
-    "static/js/3.878cd095.chunk.js.map": "/frontend/signup/static/js/3.878cd095.chunk.js.map",
-    "index.html": "/frontend/signup/index.html",
-    "static/css/main.870aa505.chunk.css.map": "/frontend/signup/static/css/main.870aa505.chunk.css.map",
-    "static/js/2.423da7d0.chunk.js.LICENSE.txt": "/frontend/signup/static/js/2.423da7d0.chunk.js.LICENSE.txt",
-    "static/media/background.cb8ff19f.svg": "/frontend/signup/static/media/background.cb8ff19f.svg",
-    "static/media/hero.b832be0f.png": "/frontend/signup/static/media/hero.b832be0f.png",
-    "static/media/logo.96cb9974.png": "/frontend/signup/static/media/logo.96cb9974.png"
+    "main.css": "/100055-dowellHRhiring/static/css/main.870aa505.chunk.css",
+    "main.js": "/100055-dowellHRhiring/static/js/main.5709d33a.chunk.js",
+    "main.js.map": "/100055-dowellHRhiring/static/js/main.5709d33a.chunk.js.map",
+    "runtime-main.js": "/100055-dowellHRhiring/static/js/runtime-main.9624edb1.js",
+    "runtime-main.js.map": "/100055-dowellHRhiring/static/js/runtime-main.9624edb1.js.map",
+    "static/js/2.85a7cb54.chunk.js": "/100055-dowellHRhiring/static/js/2.85a7cb54.chunk.js",
+    "static/js/2.85a7cb54.chunk.js.map": "/100055-dowellHRhiring/static/js/2.85a7cb54.chunk.js.map",
+    "static/js/3.c72800e5.chunk.js": "/100055-dowellHRhiring/static/js/3.c72800e5.chunk.js",
+    "static/js/3.c72800e5.chunk.js.map": "/100055-dowellHRhiring/static/js/3.c72800e5.chunk.js.map",
+    "index.html": "/100055-dowellHRhiring/index.html",
+    "static/css/main.870aa505.chunk.css.map": "/100055-dowellHRhiring/static/css/main.870aa505.chunk.css.map",
+    "static/js/2.85a7cb54.chunk.js.LICENSE.txt": "/100055-dowellHRhiring/static/js/2.85a7cb54.chunk.js.LICENSE.txt",
+    "static/media/background.cb8ff19f.svg": "/100055-dowellHRhiring/static/media/background.cb8ff19f.svg",
+    "static/media/hero.b832be0f.png": "/100055-dowellHRhiring/static/media/hero.b832be0f.png",
+    "static/media/logo.96cb9974.png": "/100055-dowellHRhiring/static/media/logo.96cb9974.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.401afb92.js",
-    "static/js/2.423da7d0.chunk.js",
+    "static/js/runtime-main.9624edb1.js",
+    "static/js/2.85a7cb54.chunk.js",
     "static/css/main.870aa505.chunk.css",
-    "static/js/main.d98a7dc8.chunk.js"
+    "static/js/main.5709d33a.chunk.js"
   ]
 }

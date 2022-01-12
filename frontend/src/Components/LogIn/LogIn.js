@@ -21,7 +21,7 @@ const Login = () => {
 
         dispatch(startLogin())
         
-        axios.post('https://100055.pythonanywhere.com/login/', {username: userName,password: password}  ,{ headers: { 'Content-Type': 'application/json' }})
+        axios.post('https://100014.pythonanywhere.com/accounts/login/', {username: userName,password: password}  ,{ headers: { 'Content-Type': 'application/json' }})
         .then(
           res => 
           {
