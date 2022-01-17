@@ -1,0 +1,63 @@
+Start	Function Name (dowelllogin)																								
+																									
+	"call dowelllogin(username, password,  Base64 value of image, voice, face-accuracy, voice-accuracy, return values of dowellclock(), language selected by user(langaugeID), sessionID,
+location of user, device of user, OS of the device of user, connectivity of user, processID)"																								
+		Save Location into VarLocation																							
+		Save connectivity into VarConnectivity																							
+		Save device into VarDevice																							
+		Save OS into VarOS																							
+		Save processID into VarProcessID 																							
+		"Validate username and password in database. 
+return [""username"", ""password"", ""user ID""]"				call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
+		check if function returns error																							
+		if(yes)																							
+			Return error status(number ,description:"database error")																						
+		if(no)																							
+			check if function returns empty value																						
+			if(yes)																						
+				Return error status(number ,description:"username not found")																					
+			if(no)																						
+				To save image in database, save base64 value of image in variable "field"																					
+				call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,INSERT,field,update_field)																					
+																									
+				To save voice in database, save voice in variable "field"																					
+				call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,INSERT,field,update_field)																					
+																									
+				call dowellvoiceid(user ID, location+name of yml-file , voice) returns accuracy																					
+				call dowellfaceid(user ID, location+name of yml-file , Base64 value of image) returns accuracy																					
+				if(accuracy < face-accuracy)																					
+					show "face cannot be matched"																				
+				if(accuracy > face-accuracy)																					
+					call dowellSecurityLayer()																				
+					if(yes)																				
+						To get rights based on ["user ID", VarLocation"]																			
+						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
+						save rights in 'locRights' array																			
+																									
+						To get rights based on ["user ID", "VarConnectivity"]																			
+						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
+						save rights in 'connRights' array																			
+																									
+						To get rights based on ["user ID", "VarDevice"]																			
+						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
+						save rights in 'devRights' array																			
+																									
+						To get rights based on ["user ID", "VarOS"]																			
+						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
+						save rights in 'osRights' array																			
+																									
+						To get rights based on ["user ID", "VarProcessID"]																			
+						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
+						save rights in 'processRights' array																			
+																									
+						To get rights based on ["user ID"]																			
+						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
+						save rights in 'userRights' array																			
+																									
+						call dowellintersection('locRights', 'connRights', 'devRights', 'osRights', 'processRights', 'userRights')																			
+						store return value of dowellintersection in 'finalRights' array																			
+						create loginsessionID = user ID + languageID + sessionID																			
+						create variable "field"																			
+						field = ["loginsessionID","finalRights", "Device", "OS", "Connectivity", "Location", "EVENT", "DATE+TIME", "Dowelltime"]																			
+						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,INSERT,field,update_field)																			
+						call dowelleventcreation() returns eventID																			
