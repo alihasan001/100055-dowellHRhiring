@@ -1,63 +1,77 @@
-Start	Function Name (dowelllogin)																								
+Start																									
+	Call page																								
+javascript		web app dowellclock(t1,t2,t3, IP, Language)																							
 																									
-	"call dowelllogin(username, password,  Base64 value of image, voice, face-accuracy, voice-accuracy, return values of dowellclock(), language selected by user(langaugeID), sessionID,
-location of user, device of user, OS of the device of user, connectivity of user, processID)"																								
-		Save Location into VarLocation																							
-		Save connectivity into VarConnectivity																							
-		Save device into VarDevice																							
-		Save OS into VarOS																							
-		Save processID into VarProcessID 																							
-		"Validate username and password in database. 
-return [""username"", ""password"", ""user ID""]"				call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
-		check if function returns error																							
-		if(yes)																							
-			Return error status(number ,description:"database error")																						
-		if(no)																							
-			check if function returns empty value																						
-			if(yes)																						
-				Return error status(number ,description:"username not found")																					
-			if(no)																						
-				To save image in database, save base64 value of image in variable "field"																					
-				call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,INSERT,field,update_field)																					
+			Select language																						
+				List of language from language master based on city master set to (array)																					
+				Mark user's browsing language																					
+Python	Call dowelllogin () in home page																								
+		Login form (No)																							
+			go to 100																						
+		Login form (yes)																							
+			List of language in drop down menu from language array																						
+			user name																						
+				check frontend rules of user name																					
+					call languagedetection ()																				
+			password																						
+				check pass word rules																					
+			take Face ID/Selffie																						
+			Take voice																						
+		New user contact admin for user name and password																							
+		If cancel																							
+			exit																						
+100		if login																							
+javascript			permission for location (variable)																						
+				call dowelllocation (permission yes/no)																					
+				web app dowelllocation(IP, Latitude, Longitude, region, language, city, contry)																					
+python			varify user																						
+				If selffie (No)																					
+					go to 110																				
+				if selffie (yes)																					
+				dowellconnection (insert, selfie)																					
+				call dowellfaceID() Face ID/Selffie																					
+					if yes																				
+110					if voice (No)																				
+						go to 120																			
+					if voice (yes)																				
+					dowellconnection (insert, voice)																				
+					call dowelvoiceID ()																				
+						if yes																			
+120						Layer (1,2,3,4,5,6) based rights																			
+							if yes																		
+							Location based rights																		
+								Regional > country > city wise rights of the project																	
+								Connect to city master																	
+								if yes																	
+								Connectivity based rights																	
+									If yes																
+									Device based rights																
+										If yes															
+										OS based rights															
+											If yes														
+											role based rights														
+												if yes													
+												Process based rights													
+													if yes												
+													user based rights (edit, add, update, view)												
+														Connect to user master											
+														If yes											
+														Login											
+														set rights to array											
+														Prompt (user rights)											
+														Continue 200											
+			if No																						
+				Prompt ( Rights not set, contact admin)																					
 																									
-				To save voice in database, save voice in variable "field"																					
-				call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,INSERT,field,update_field)																					
+200	session ID																								
+		create session ID																							
+		user ID + Language ID + Session number																							
+		web app call dowellconnection ()																							
+		save to logedin queue																							
 																									
-				call dowellvoiceid(user ID, location+name of yml-file , voice) returns accuracy																					
-				call dowellfaceid(user ID, location+name of yml-file , Base64 value of image) returns accuracy																					
-				if(accuracy < face-accuracy)																					
-					show "face cannot be matched"																				
-				if(accuracy > face-accuracy)																					
-					call dowellSecurityLayer()																				
-					if(yes)																				
-						To get rights based on ["user ID", VarLocation"]																			
-						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
-						save rights in 'locRights' array																			
+		web app eventcreation ()																							
 																									
-						To get rights based on ["user ID", "VarConnectivity"]																			
-						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
-						save rights in 'connRights' array																			
+	Cal result																								
+		dowelllogin (sessionID, selffie ID, Voice ID, rights (array))																							
 																									
-						To get rights based on ["user ID", "VarDevice"]																			
-						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
-						save rights in 'devRights' array																			
-																									
-						To get rights based on ["user ID", "VarOS"]																			
-						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
-						save rights in 'osRights' array																			
-																									
-						To get rights based on ["user ID", "VarProcessID"]																			
-						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
-						save rights in 'processRights' array																			
-																									
-						To get rights based on ["user ID"]																			
-						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,FETCH,field,update_field)																			
-						save rights in 'userRights' array																			
-																									
-						call dowellintersection('locRights', 'connRights', 'devRights', 'osRights', 'processRights', 'userRights')																			
-						store return value of dowellintersection in 'finalRights' array																			
-						create loginsessionID = user ID + languageID + sessionID																			
-						create variable "field"																			
-						field = ["loginsessionID","finalRights", "Device", "OS", "Connectivity", "Location", "EVENT", "DATE+TIME", "Dowelltime"]																			
-						call dowellconnection(cluster,platform,database,collection,document,team_member_ID,function_ID,INSERT,field,update_field)																			
-						call dowelleventcreation() returns eventID																			
+End																									
